@@ -29,7 +29,7 @@ public class KafkaConfig {
     public NewTopic temperatureTopic() {
         return TopicBuilder.name("data-temperature")
                 .partitions(5)
-                .replicas(5)
+                .replicas(1)
                 .config(
                         TopicConfig.RETENTION_MS_CONFIG,
                         String.valueOf(Duration.ofDays(7).toMillis())
@@ -41,7 +41,7 @@ public class KafkaConfig {
     public NewTopic voltageTopic() {
         return TopicBuilder.name("data-voltage")
                 .partitions(5)
-                .replicas(5)
+                .replicas(1)
                 .config(
                         TopicConfig.RETENTION_MS_CONFIG,
                         String.valueOf(Duration.ofDays(7).toMillis())
@@ -53,7 +53,7 @@ public class KafkaConfig {
     public NewTopic powerTopic() {
         return TopicBuilder.name("data-power")
                 .partitions(5)
-                .replicas(5)
+                .replicas(1)
                 .config(
                         TopicConfig.RETENTION_MS_CONFIG,
                         String.valueOf(Duration.ofDays(7).toMillis())
@@ -80,7 +80,7 @@ public class KafkaConfig {
     }
 
     @Bean
-    public KafkaSender<String, Object> sender() {
+    public KafkaSender<String, Object> sender(SenderOptions<String, Object> senderOptions) {
         return KafkaSender.create(senderOptions());
     }
 }
