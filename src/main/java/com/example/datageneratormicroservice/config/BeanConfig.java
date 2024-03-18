@@ -6,15 +6,15 @@ import lombok.SneakyThrows;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.io.File;
-
 @Configuration
 public class BeanConfig {
 
     @SneakyThrows
     @Bean
     public XML producerXML() {
-        return new XMLDocument(new File("src/main/resources/kafka/producer.xml"));
+        return new XMLDocument(
+                getClass().getResourceAsStream("/kafka/consumer.xml").readAllBytes()
+        );
     }
 
 }
