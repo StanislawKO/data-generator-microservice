@@ -13,7 +13,7 @@ public class BeanConfig {
     @Bean
     public XML producerXML() {
         return new XMLDocument(
-                getClass().getResourceAsStream("/kafka/consumer.xml").readAllBytes()
+                getClass().getResourceAsStream("/kafka/producer.xml").readAllBytes()
         );
     }
 
